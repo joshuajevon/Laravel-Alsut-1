@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=\, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>update book</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
@@ -13,28 +13,38 @@
 <body>
 
     <div class="m-5">
-        <h1>Create Book</h1>
-        <form action="/store-book" method="POST" enctype="multipart/form-data">
+        <h1>Update Book {{ $book->Name }}</h1>
+        <form action="/update/{{ $book->id }}" method="POST" enctype="multipart/form-data">
             @csrf
+            @method('PATCH')
             <div class="mb-3">
                 <label for="" class="form-label">Name</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" name="Name">
+                <input type="text" class="form-control" id="exampleInputEmail1" value="{{ $book->Name }}"
+                    name="Name">
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Publication Date</label>
-                <input type="date" class="form-control" id="exampleInputEmail1" name="PublicationDate">
+                <input value="{{ $book->PublicationDate }}" type="date" class="form-control" id="exampleInputEmail1"
+                    name="PublicationDate">
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Stock</label>
-                <input type="number" class="form-control" id="exampleInputEmail1" name="Stock">
+                <input value="{{ $book->Stock }}" type="number" class="form-control" id="exampleInputEmail1"
+                    name="Stock">
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Author</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" name="Author">
+                <input value="{{ $book->Author }}" type="text" class="form-control" id="exampleInputEmail1"
+                    name="Author">
+            </div>
+            <div class="card">
+                <img src="{{ asset('storage/'.$book->BookImg) }}" width="225" height="225" class="card-img-top"
+                    alt="...">
             </div>
             <div class="mb-3">
-                <label for="" class="form-label">Author</label>
-                <input type="file" class="form-control" id="exampleInputEmail1" name="BookImg">
+                <label for="" class="form-label">BookImg</label>
+                <input value="" type="file" class="form-control" id="exampleInputEmail1"
+                    name="BookImg">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

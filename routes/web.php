@@ -18,8 +18,17 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', [BookController::class, 'index']);
+Route::get('/', [BookController::class, 'index'])->name('home');
 
 Route::get('/create-book', [BookController::class, 'createBook']);
 
 Route::post('/store-book', [BookController::class, 'storeBook']);
+
+//View Update
+Route::get('/update-book/{id}', [BookController::class, 'updateBookView']);
+
+//update data from view
+Route::patch('/update/{id}', [BookController::class, 'updateBook']);
+
+//delete data
+Route::delete('/delete-book/{id}', [BookController::class, 'deleteBook']);

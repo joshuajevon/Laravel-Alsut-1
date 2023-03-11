@@ -13,6 +13,7 @@ class Book extends Model
         'Name',
         'PublicationDate',
         'Stock',
-        'Author'
+        'Author',
+        'BookImg'
     ];
 }
