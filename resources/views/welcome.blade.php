@@ -38,23 +38,26 @@
     </table>
 
     {{-- card --}}
-    @foreach ($books as $b)
-        <div class="card" style="width: 18rem;">
-            <img src="{{ asset('storage/'. $b->BookImg) }}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h1 class="card-title">{{ $b->Name }}</h1>
-                <h3>{{ $b->PublicationDate }}</h3>
-                <p class="card-text">{{ $b->Stock }}</p>
-                <p>{{ $b->Author }}</p>
-                <a href="/update-book/{{ $b->id }}" class="btn btn-primary">Edit Book</a>
-                <form action="/delete-book/{{ $b->id }}" method="post">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-primary">Delete</button>
-                </form>
+    <div class="m-5">
+        @foreach ($books as $b)
+            <div class="card m-4" style="width: 18rem;">
+                <img src="{{ asset('storage/'. $b->BookImg) }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h1 class="card-title">{{ $b->Name }}</h1>
+                    <h3>{{ $b->PublicationDate }}</h3>
+                    <p class="card-text">{{ $b->Stock }}</p>
+                    <p>{{ $b->Author }}</p>
+                    <p>{{ $b->category->CategoryName }}</p>
+                    <a href="/update-book/{{ $b->id }}" class="btn btn-primary">Edit Book</a>
+                    <form action="/delete-book/{{ $b->id }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-primary">Delete</button>
+                    </form>
+                </div>
             </div>
-        </div>
-    @endforeach
+        @endforeach
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">

@@ -18,24 +18,68 @@
             @csrf
             <div class="mb-3">
                 <label for="" class="form-label">Name</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" name="Name">
+                <input type="text" class="form-control @error('Name') is-invalid @enderror" id="exampleInputEmail1" name="Name" value="{{ old('Name') }}">
             </div>
+
+            @error('Name')
+                <div class="alert alert-danger" role="alert">
+                    {{$message}}
+                </div>
+            @enderror
+
             <div class="mb-3">
                 <label for="" class="form-label">Publication Date</label>
-                <input type="date" class="form-control" id="exampleInputEmail1" name="PublicationDate">
+                <input type="date" class="form-control @error('PublicationDate') is-invalid @enderror" id="exampleInputEmail1" name="PublicationDate" value="{{ old('PublicationDate') }}">
             </div>
+
+            @error('PublicationDate')
+                <div class="alert alert-danger" role="alert">
+                    {{$message}}
+                </div>
+            @enderror
+
             <div class="mb-3">
                 <label for="" class="form-label">Stock</label>
-                <input type="number" class="form-control" id="exampleInputEmail1" name="Stock">
+                <input type="number" class="form-control @error('Stock') is-invalid @enderror" id="exampleInputEmail1" name="Stock" value="{{ old('Stock') }}">
             </div>
+
+            @error('Stock')
+                <div class="alert alert-danger" role="alert">
+                    {{$message}}
+                </div>
+            @enderror
+
             <div class="mb-3">
                 <label for="" class="form-label">Author</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" name="Author">
+                <input type="text" class="form-control @error('Author') is-invalid @enderror" id="exampleInputEmail1" name="Author" value="{{ old('Author') }}">
             </div>
+
+            @error('Author')
+                <div class="alert alert-danger" role="alert">
+                    {{$message}}
+                </div>
+            @enderror
+
             <div class="mb-3">
-                <label for="" class="form-label">Author</label>
-                <input type="file" class="form-control" id="exampleInputEmail1" name="BookImg">
+                <label for="" class="form-label">Image</label>
+                <input type="file" class="form-control @error('BookImg') is-invalid @enderror" id="exampleInputEmail1" name="BookImg">
             </div>
+
+            @error('BookImg')
+                <div class="alert alert-danger" role="alert">
+                    {{$message}}
+                </div>
+            @enderror
+
+            <div class="mb-3">
+                <label for="" class="form-label">Category</label>
+                <select class="form-select" aria-label="Default select example" name="CategoryName">
+                    @foreach ($categories as $c)
+                        <option value="{{ $c->id }}">{{ $c->CategoryName }}</option>
+                    @endforeach
+                </select>
+            </div>
+
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>

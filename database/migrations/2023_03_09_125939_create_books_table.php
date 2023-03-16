@@ -20,6 +20,8 @@ return new class extends Migration
             $table->integer('Stock');
             $table->string('Author');
             $table->string('BookImg');
+            $table->unsignedBigInteger('Category_Id');
+            $table->foreign('Category_Id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
